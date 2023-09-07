@@ -14,6 +14,7 @@ return (
         <motion.li
             key={id}
             className="names"
+            initial={{ x: 200 }}
             animate={{ x: -20 }}
             whileHover={{ scale: 1.1 }}
         >
