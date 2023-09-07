@@ -1,6 +1,6 @@
 import './App.css'
 import React, { useState } from 'react'
-import { delay, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ListOfNames from './components/ListOfNames'
 import { path, svgVariants, pathVariants } from './components/SVG'
 
