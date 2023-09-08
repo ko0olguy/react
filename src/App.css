@@ -3,7 +3,6 @@
 .App {
   text-align: center;
   font-family: "Quicksand";
-  background-color: #222;
 }
 
 .App-logo {
@@ -20,7 +19,7 @@
 } */
 
 .App-header {
-  background-color: #222;
+  background-image: linear-gradient(to right bottom, #222831, #262c35, #2a3039, #2f343d, #333841, #38424e, #3c4c5b, #3f5768, #3c6b80, #338196, #2197a8, #00adb5);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -97,7 +96,7 @@ ul {
   color: rgb(110, 110, 110);
   cursor: pointer;
   margin-bottom: 5px;
-  margin-right: 5px;
+  margin-right: 20px;
   font-family: inherit;
 }
 
@@ -113,34 +112,75 @@ ul {
   color: rgb(110, 110, 110);
   cursor: pointer;
   margin-bottom: 5px;
-  margin-left: 5px;
+  margin-left: 20px;
   font-family: inherit;
 }
 
-.submitButton {
-  padding: 5px 10px;
-  border-radius: 7px;
-  background-color: #282c34;
-  color: rgb(110, 110, 110);
-  cursor: pointer;
-  font-family: inherit;
-  position: relative;
-  margin-top: 50px;
-  margin-bottom: -30px;
-}
 
 .decrease:hover {
   color: white;
   font: large;
 }
 
-.input {
-  font-family: inherit;
-  border-radius: 10px;
-  text-align: center;
+.email-label {
+  color: #222;
 }
 
-.output {
+.email-input {
+  font-family: inherit;
+  background-color: #222;
+  color: #2197a8;
+  border-radius: 6px;
+  position: relative;
+  padding: 7px 7px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.name-label {
+  color: #222;
+}
+
+.name-input {
+  font-family: inherit;
+  background-color: #222;
+  color: #2197a8;
+  border-radius: 6px;
+  position: relative;
+  padding: 7px 7px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.submit-button {
+  position: relative;
+  transform: translateX(80px);
+  background-color: #00adb5;
+  margin-top: 30px;
+  color: white;
+  border-radius: 10px 10px;
+  padding: 5px 50px;
+  font-size: large;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.onSub {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: auto;
+}
+
+.name-email {
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  transform: translateY(100px);
+  font-size: 0.8em;
+  color: #222;
+  transform: translateY(100px) translateX(140px);
+  
 }

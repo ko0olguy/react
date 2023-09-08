@@ -4,6 +4,24 @@ import { motion } from 'framer-motion'
 import ListOfNames from './components/ListOfNames'
 import { path, svgVariants, pathVariants } from './components/SVG'
 
+// const apiKey = '2dcc090fe80e4ee2aea4b91893081810'
+// const apiURL = 'https://emailvalidation.abstractapi.com/v1/?api_key=' + apiKey
+// const sendEmailValidationRequest = async (email) => {
+//   try {
+//       const response = await fetch(apiURL + '&email=' + email)
+//       const data = await response.json()
+//       const isValidSMTP = data.is_smtp_valid.value
+//       console.log(data)
+//       if (isValidSMTP) {
+//         return true
+//       } else {
+//         return false
+//       }
+//   } catch (error) {
+//       return false
+//   }
+// }
+
 function App() {
   return (
     <body className="App-header">
@@ -23,38 +41,57 @@ function App() {
   )
 }
 
-
-
 function TextInput() {
-  const [inputText, setInputText] = useState('')
-  const [displayText, setDisplayText] = useState('')
+  const [email, setEmail] = useState('') 
+  const [name, setName] = useState('') 
+  const [submitted, setSubmitted] = useState(false)  // New state variable
 
-  const handleChange = (e) => {
-    setInputText(e.target.value)
-  };
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const handleNameChange = (e) => {
+    setName(e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setDisplayText(inputText)
-    setInputText('')
+    // sendEmailValidationRequest(email)
+    // Do something with email and name if needed
+    setSubmitted(true)  // Set submitted to true when the button is pressed
   }
 
   return (
-    <form onSubmit={handleSubmit} className='form'>
+    <form onSubmit={handleSubmit} className='onSub'>
+      <label htmlFor="email" className='email-label'>Email</label>
       <input
-        type="text"
-        onChange={handleChange}
-        placeholder="Enter Name : Email"
-        className="input"
+        type="email"
+        id="email"
+        value={email}
+        className='email-input'
+        onChange={handleEmailChange}
+        placeholder="Enter Email"
       />
-      <motion.button 
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
-      type="submit" className='submitButton'>
+      <label htmlFor="name" className='name-label'>Name</label>
+      <input
+        type="name"
+        id="name"
+        value={name}
+        className='name-input'
+        placeholder="Enter Name"
+        onChange={handleNameChange}
+      />
+      <button 
+        type="submit"
+        className='submit-button'>
         Submit
-      </motion.button>
-      {displayText ? <motion.p initial={{opacity: 0}} animate={{opacity: 1}} className='output'>{displayText}</motion.p> : null}
+      </button>
+      {submitted && email && name && ( // Display only when submitted and both fields are filled
+    <motion.p className='name-email' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      {name} : {email}
+    </motion.p>)}
     </form>
+    
   )
 }
 export default App
