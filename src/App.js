@@ -44,7 +44,8 @@ function App() {
 function TextInput() {
   const [email, setEmail] = useState('') 
   const [name, setName] = useState('') 
-  const [submitted, setSubmitted] = useState(false)  // New state variable
+  const [submitted, setSubmitted] = useState(false)
+  const [animation, setAnimation] = useState(false) // New state variable
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -59,6 +60,11 @@ function TextInput() {
     // sendEmailValidationRequest(email)
     // Do something with email and name if needed
     setSubmitted(true)  // Set submitted to true when the button is pressed
+    setAnimation(false)
+    setTimeout(() => {
+      setAnimation(true)
+    }, 3000)
+    
   }
 
   return (
@@ -86,8 +92,8 @@ function TextInput() {
         className='submit-button'>
         Submit
       </button>
-      {submitted && email && name && ( // Display only when submitted and both fields are filled
-    <motion.p className='name-email' initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+      {submitted && email && name && (
+    <motion.p className='name-email' initial={{ opacity: 0 }} animate={animation ? {opacity: 0} : {opacity: 1}} transition={{ duration: 0.5 }}>
       {name} : {email}
     </motion.p>)}
     </form>
